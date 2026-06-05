@@ -80,7 +80,7 @@ Implement the JPEG Streaming mode. Currently only MediaRecorder Streaming is imp
 
 ## Screenshot
 
-![Screenshot](Screenshot.png)
+![Screenshot](screenshot.png)
 
 ---
 
