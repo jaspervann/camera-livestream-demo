@@ -2,7 +2,7 @@
 
 Camera Livestream Demo is a small FastAPI application for publishing and watching camera livestreams over WebSockets. Browsers can publish either low-latency JPEG video frames or audio-enabled MediaRecorder chunks, while other browsers watch every active stream in real time. The app supports multiple publishers, late-joining viewers, camera switching, and local-network use with HTTPS/WSS.
 
-The app has two browser pages:
+The app has two mobile-friendly browser pages:
 
 - `/stream`: opens the device camera, enables the microphone when the selected mode supports audio, shows a local preview, lets the user choose a streaming mode, and starts or stops publishing.
 - `/watch`: shows all active livestreams in a responsive grid and updates automatically as streams start, reset, switch mode, or stop.
@@ -174,17 +174,17 @@ Use JPEG frame streaming over WebSocket when:
 Architecture:
 
 ```text
-Capture Device
-      ↓
- JPEG Frames
-      ↓
+ Capture Device
+       ↓
+  JPEG Frames
+       ↓
    WebSocket
-      ↓
+       ↓
  Central Server
-      ↓
+       ↓
    WebSocket
-      ↓
- Viewer
+       ↓
+Viewer (<video>)
 ```
 
 The server should maintain a latest-frame-only strategy and drop outdated frames when necessary to minimize latency.
@@ -200,17 +200,17 @@ Use MediaRecorder streaming over WebSocket when:
 Architecture:
 
 ```text
-Capture Device
-      ↓
- MediaRecorder Chunks
-      ↓
-     WebSocket
-      ↓
-  Central Server
-      ↓
-     WebSocket
-      ↓
-     Viewer
+      Capture Device
+             ↓
+   MediaRecorder Chunks
+             ↓
+        WebSocket
+             ↓
+      Central Server
+             ↓
+        WebSocket
+             ↓
+Viewer (<img> or <canvas>)
 ```
 
 ## Consequences
