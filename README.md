@@ -21,7 +21,7 @@ For implementation-specific design decisions and their rationale, see the [Archi
 - Sends stream lifecycle messages so watcher tiles appear, reset, and disappear without refreshing the page.
 - Keeps mode-appropriate startup state so late-joining watchers can initialize playback for already-active streams.
 - Lets watchers mute/unmute streams with audio, expand a stream tile, and close the expanded view.
-- Lets streamers swap between front and rear cameras when the browser and device support both.
+- Lets mobile streamers swap between front and rear cameras when the browser and device support both.
 - Keeps watchers near the live edge by dropping stale JPEG frames or trimming old buffered MediaRecorder data.
 - Reconnects the watch page automatically if its WebSocket connection drops.
 
@@ -77,6 +77,10 @@ All media flows client-to-server over WSS and server-to-watchers over WSS. Clien
 
 ## Todo
 Implement the JPEG Streaming mode. Currently only MediaRecorder Streaming is implemented. From the stream page, the user must be able to select the desired mode.
+
+## Screenshot
+
+![Screenshot](Screenshot.png)
 
 ---
 
