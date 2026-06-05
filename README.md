@@ -1,6 +1,6 @@
 # Camera Livestream Demo
 
-Camera Livestream Demo is a small FastAPI application for publishing and watching camera livestreams over WebSockets. Browsers can publish either low-latency JPEG video frames or audio-enabled MediaRecorder chunks, while other browsers watch every active stream in real time. The demo supports multiple publishers, late-joining viewers, camera switching, and local-network use with HTTPS/WSS.
+Camera Livestream Demo is a small FastAPI application for publishing and watching camera livestreams over WebSockets. Browsers can publish either low-latency JPEG video frames or audio-enabled MediaRecorder chunks, while other browsers watch every active stream in real time. The app supports multiple publishers, late-joining viewers, camera switching, and local-network use with HTTPS/WSS.
 
 The app has two browser pages:
 
@@ -152,7 +152,7 @@ Disadvantages:
 
 ## Decision
 
-The streaming platform will support two streaming modes over WebSocket.
+The application will support two streaming modes over WebSocket.
 
 The selected streaming mode shall depend on the functional requirements of the use case:
 
