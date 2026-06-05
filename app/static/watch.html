@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Watch Livestreams</title>
+    <link rel="stylesheet" href="/static/common.css">
+    <link rel="stylesheet" href="/static/watch.css">
+  </head>
+  <body>
+    <main class="watch-shell">
+      <header class="topbar">
+        <h1>Watch</h1>
+        <a class="stream-link" href="/stream">Stream</a>
+      </header>
+
+      <div id="grid" class="stream-grid" aria-live="polite"></div>
+      <p id="emptyState" class="empty">No active livestreams.</p>
+      <p id="status" class="status" role="status">Connecting...</p>
+    </main>
+    <script src="/static/watch.js"></script>
+  </body>
+</html>

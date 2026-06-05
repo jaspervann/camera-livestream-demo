@@ -1,0 +1,82 @@
+.watch-shell {
+  width: min(1400px, calc(100vw - 32px));
+  margin: 0 auto;
+  padding: 24px 0;
+}
+
+.stream-link {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.stream-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 14px;
+}
+
+.tile {
+  position: relative;
+  min-height: 210px;
+  background: #050605;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.tile video {
+  width: 100%;
+  height: 100%;
+  min-height: 210px;
+  display: block;
+  background: #000;
+  object-fit: contain;
+}
+
+.tile-bar {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  gap: 8px;
+}
+
+.tile .icon-button {
+  background: rgb(20 24 21 / 0.86);
+}
+
+.tile.audio-on .mute-button {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #05120b;
+}
+
+.tile.fullscreen {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  width: 100vw;
+  height: 100vh;
+  border: 0;
+  border-radius: 0;
+}
+
+.tile.fullscreen video {
+  width: 100vw;
+  height: 100vh;
+}
+
+.tile.fullscreen .expand-button {
+  display: none;
+}
+
+.tile:not(.fullscreen) .close-button {
+  display: none;
+}
+
+.empty {
+  margin: 40px 0;
+  color: var(--muted);
+  text-align: center;
+}

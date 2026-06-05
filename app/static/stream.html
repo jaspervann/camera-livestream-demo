@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Stream Camera</title>
+    <link rel="stylesheet" href="/static/common.css">
+    <link rel="stylesheet" href="/static/stream.css">
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="topbar">
+        <h1>Stream</h1>
+        <a class="watch-link" href="/watch">Watch</a>
+      </header>
+
+      <section class="stream-stage">
+        <video id="preview" autoplay muted playsinline></video>
+        <button id="swapButton" class="icon-button preview-icon-button hidden" type="button" title="Swap camera" aria-label="Swap camera">
+          <svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+            <path d="M21.25 7.5c.38 0 .693.282.743.648L22 8.25v8.5c0 1.733-1.356 3.149-3.066 3.245L18.75 20H6.061l.719.72a.75.75 0 0 1-.977 1.133l-.084-.073-2-2-.063-.072-.007-.009.071.081a.752.752 0 0 1-.097-.119 1.14 1.14 0 0 1-.037-.063 1.12 1.12 0 0 1-.04-.105.883.883 0 0 1-.014-.025A.75.75 0 0 1 3.5 19.25a.753.753 0 0 1 .22-.53l2-2a.75.75 0 0 1 1.133.977l-.073.083-.72.72h12.69a1.75 1.75 0 0 0 1.744-1.606l.006-.144v-8.5c0-.414.336-.75.75-.75ZM18.196 2.147l.084.073 2 2c.026.025.049.052.071.081l-.071-.081a.752.752 0 0 1 .097.119 1.14 1.14 0 0 1 .037.063 1.12 1.12 0 0 1 .04.105l.014.025A.75.75 0 0 1 20.5 4.75a.753.753 0 0 1-.22.53l-2 2a.75.75 0 0 1-1.133-.977l.073-.083.718-.72H5.25a1.75 1.75 0 0 0-1.744 1.606L3.5 7.25v8.5a.75.75 0 0 1-1.493.102L2 15.75v-8.5c0-1.733 1.356-3.149 3.066-3.245L5.25 4h12.689l-.719-.72a.75.75 0 0 1 .976-1.133ZM12 8a4 4 0 1 1 0 8 4 4 0 0 1 0-8Zm0 1.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5Z"></path>
+          </svg>
+        </button>
+      </section>
+
+      <section class="controls" aria-label="Stream controls">
+        <button id="startButton" class="primary" type="button">Start</button>
+        <button id="stopButton" class="danger" type="button" disabled>Stop</button>
+      </section>
+
+      <p id="status" class="status" role="status">Preparing camera...</p>
+    </main>
+    <script src="/static/stream.js"></script>
+  </body>
+</html>

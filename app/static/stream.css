@@ -1,0 +1,38 @@
+.watch-link {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.stream-stage {
+  position: relative;
+  background: #050605;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+}
+
+#preview {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  background: #000;
+}
+
+.preview-icon-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 2;
+  background: rgb(20 24 21 / 0.86);
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
