@@ -95,7 +95,7 @@ Network constraints:
 - The solution must operate entirely through a central server.
 - Low latency is an important requirement.
 
-Several streaming approaches were evaluated.
+Several streaming approaches were evaluated:
 
 ### ❌ WebRTC
 
