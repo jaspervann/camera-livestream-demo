@@ -1,6 +1,6 @@
 # Camera Livestream Demo
 
-Camera Livestream Demo is a small FastAPI application for publishing and watching camera livestreams through a central server. Browsers can publish low-latency JPEG video streams over HTTP or WebSocket, or audio-enabled MediaRecorder chunks over WebSocket, while other browsers watch every active stream in real time. The app supports multiple publishers, late-joining viewers and camera switching.
+Camera Livestream Demo is a small FastAPI application for publishing and watching camera livestreams through a central server. Browsers can publish streams using MJPEG over HTTP, JPEG Frames over WebSocket, or MediaRecorder Chunks over WebSocket, while other browsers watch every active stream in real time. The app supports multiple publishers, late-joining viewers and camera switching.
 
 The app has two mobile-friendly browser pages:
 
@@ -11,7 +11,7 @@ For implementation-specific design decisions and their rationale, see the [Archi
 
 ## Functionality
 
-- Supports three live streaming modes: MJPEG over HTTP, MJPEG-like JPEG frames over WebSocket, and MediaRecorder chunks over WebSocket.
+- Supports three live streaming modes: MJPEG over HTTP, JPEG Frames over WebSocket, and MediaRecorder Chunks over WebSocket.
 - Provides low-latency video-only streaming, optional audio-enabled streaming, and a lower-bandwidth encoded media path.
 - Sends publisher media to the FastAPI server and relays it to all connected watchers through the selected HTTP(S) or WebSocket transport.
 - Central-server-only routing: clients never connect directly to each other.
@@ -81,7 +81,7 @@ All media flows client-to-server and then server-to-client, through the central 
 
 ## Todo
 - Implement the MJPEG over HTTP mode.
-- Implement the MJPEG-like Streaming over WebSocket mode.
+- Implement the JPEG Frames over WebSocket mode.
 
 Currently only MediaRecorder Chunks over WebSocket mode is implemented. From the stream page, the user must be able to select the desired mode. When switching whilst a stream is active, the same stream id must be used, and on the watch page the same DOM (parent)element must be used, so that the same stream stays in at the same spot in the grid.
 ## Screenshot
@@ -167,9 +167,9 @@ Disadvantages:
 - Unidirectional transport.
 - Might require a separate, additional WebSocket-based connection alongside the multipart HTTP streaming channel, when the application also needs control messages, lifecycle events, or telemetry.
 
-### ✅ MJPEG-like Streaming over WebSocket
+### ✅ JPEG Frames over WebSocket
 
-Video frames are still captured and encoded as standalone JPEG images, similar to classic MJPEG. The difference is the transport: instead of sending those frames through a multipart HTTP response, each WebSocket message contains one JPEG image. The browser receives those messages in JavaScript and updates the displayed image as frames arrive.
+Video frames are captured, encoded as standalone JPEG images, and transmitted individually as WebSocket messages. This is conceptually similar to MJPEG because each frame is an independently encoded JPEG and there is no inter-frame compression, but it is not technically MJPEG because it uses WebSocket rather than a multipart HTTP response. The browser receives those messages in JavaScript and updates the displayed image as frames arrive.
 
 Advantages:
 
@@ -207,8 +207,8 @@ The application will support three streaming modes within the network constraint
 | Mode | Recommended when |
 |------|------------------|
 | MJPEG over HTTP | <ul><li>No JavaScript is preferred.</li><li>Low-latency is required.</li><li>Video-only streaming is sufficient.</li><li>No control channel is needed, or an additional WebSocket is acceptable.</li></ul> |
-| MJPEG-like streaming over WebSocket | <ul><li>Low-latency is required.</li><li>Video-only streaming is sufficient.</li><li>A single connection model is preferred for media and control.</li></ul> |
-| MediaRecorder over WebSocket | <ul><li>Audio support is required.</li><li>Lower bandwidth usage is preferred.</li><li>Higher latency is acceptable.</li></ul> |
+| JPEG Frames over WebSocket | <ul><li>Low-latency is required.</li><li>Video-only streaming is sufficient.</li><li>A single connection model is preferred for media and control.</li></ul> |
+| MediaRecorder Chunks over WebSocket | <ul><li>Audio support is required.</li><li>Lower bandwidth usage is preferred.</li><li>Higher latency is acceptable.</li></ul> |
 
 
 ## Architecture
@@ -228,7 +228,7 @@ HTTP multipart stream
    Viewer (<img>)
 ```
 
-### Mode 2: MJPEG-like Streaming over WebSocket
+### Mode 2: JPEG Frames over WebSocket
 ```text
 Capture Device
       ↓
@@ -245,7 +245,7 @@ Viewer (<img>)
 
 Important note since this approach is not a native video/streaming format: the server should maintain a latest-frame-only strategy and drop outdated frames when necessary to minimize latency.
 
-### Mode 3: MediaRecorder Streaming
+### Mode 3: MediaRecorder Chunks over WebSocket
 ```text
    Capture Device
          ↓
