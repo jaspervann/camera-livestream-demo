@@ -83,7 +83,7 @@ All media flows client-to-server and then server-to-client, through the central 
 - Implement the MJPEG over HTTP mode.
 - Implement the JPEG Frames over WebSocket mode.
 
-Currently only MediaRecorder Chunks over WebSocket mode is implemented. From the stream page, the user must be able to select the desired mode. When switching whilst a stream is active, the same stream id must be used, and on the watch page the same DOM (parent)element must be used, so that the same stream stays in at the same spot in the grid.
+Currently only MediaRecorder Chunks over WebSocket mode is implemented. From the stream page, the user must be able to select the desired mode. When switching whilst a stream is active, the same stream id must be used, and on the watch page the same DOM (parent)element must be used, so that the same stream stays in at the same spot in the grid. There must also be a small overlay text on each stream which states the name of the stream mode being used.
 ## Screenshot
 
 ![Screenshot](screenshot.png)
